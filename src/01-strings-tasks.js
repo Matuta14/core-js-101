@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-var */
 /* *******************************************************************************************
  *                                                                                           *
  * Plese read the following tutorial before implementing tasks:                              *
@@ -18,8 +20,10 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+// eslint-disable-next-line no-unused-vars
+function concatenateStrings(value1, value2) {
+  return (value1 + value2);
+  // throw new Error('Not implemented');
 }
 
 
@@ -34,8 +38,9 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  return value.length;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -51,8 +56,9 @@ function getStringLength(/* value */) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -65,8 +71,9 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.substring(7, value.length - 1);
+  // throw new Error('Not implemented');
 }
 
 
@@ -80,8 +87,9 @@ function extractNameFromTemplate(/* value */) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value.charAt(0);
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -95,8 +103,9 @@ function getFirstChar(/* value */) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -110,8 +119,16 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  let a = '';
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < count; i++) {
+    a += value;
+  }
+
+  return a;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -126,8 +143,11 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const ind = str.indexOf(value);
+  return str.substr(0, ind) + str.substr(ind + value.length, str.length);
+
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -141,8 +161,10 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.replace(/<|>/g, '');
+
+  // throw new Error('Not implemented');
 }
 
 
@@ -156,9 +178,11 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toUpperCase();
+  // throw new Error('Not implemented');
 }
+
 
 /**
  * Extracts e-mails from single string with e-mails list delimeted by semicolons
@@ -175,8 +199,9 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(/;/);
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -202,8 +227,11 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  return `\u250C${'\u2500'.repeat(width - 2)}\u2510\n${
+    (`\u2502${'\u0020'.repeat(width - 2)}\u2502\n`).repeat(height - 2)
+  }\u2514${'\u2500'.repeat(width - 2)}\u2518\n`;
+  // throw new Error('Not implemented');
 }
 
 
@@ -223,8 +251,12 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  return str.replace(/[A-Za-z]/g, (match) => {
+    var match = match.charCodeAt(0);
+    return ((match <= 'M'.charCodeAt(0)) || ((match <= 'm'.charCodeAt(0)) && (match >= 'a'.charCodeAt(0))))
+      ? String.fromCharCode(match + 13) : String.fromCharCode(match - 13);
+  });
 }
 
 /**
@@ -240,8 +272,8 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 
@@ -269,8 +301,8 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  return '♣♦♥♠'.indexOf(value.slice(-1)) * 13 + 'A234567891JQK'.indexOf(value[0]);
 }
 
 
